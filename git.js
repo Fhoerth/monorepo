@@ -8,7 +8,7 @@ const runCommand = (command) => {
       if (err) {
         reject(err);
       } else {
-        resolve(stdout.toString());
+        resolve(stdout.toString().replace('\n', '').trim(''));
       }
     })
   })
@@ -16,16 +16,27 @@ const runCommand = (command) => {
 
 // The Parent!!
 runCommand('./parent.sh').then((result) => {
-  console.log('RESULT', result.replace('\n', '').trim(''));
+  console.log('RE SULT', result);
 });
 
-// Diff!!
-runCommand  ('git diff').then((result) => {
+
+// Diff (unstaged work)!!
+runCommand ('git diff').then((result) => {
   console.log('DIF', result.length);
 }).catch((error) => {
   console.log('ERROR');
   console.log(error);
 })
+
+// Diff cached (changes to be commited)
+runCommand('git diff --cached').then((result) => {
+  console.log('DIF CACHED', result.length);
+});
+
+// has new files
+runCommand('git ls-files . --exclude-standard --others').then((result) => {
+  console.log('Has new files', result.length);
+});
 
 runCommand('git status').then((result) => {
   console.log('Status', result.length);
