@@ -29,25 +29,28 @@ getCurrentBranch().then((result) => {
 });
 
 
+// has new files
+
+}
+
 // Diff (unstaged work)!!
 runCommand ('git diff').then((result) => {
-  console.log('DIF', result.length);
+  console.log('Has UnStagedWork?', !!result.length);
 }).catch((error) => {
-  console.log('ERROR');
-  console.log(error);
-})
+  console.log('UnstagdWorkError', error);
+});
 
 // Diff cached (changes to be commited)
 runCommand('git diff --cached').then((result) => {
-  console.log('DIF CACHED', result.length);
+  console.log('has CachedUnstagedWork?', !!result.length);
+}).catch((error) => {
+  console.log('CachedUnstagedWorkError', error);
 });
 
-// has new files
+// Has new files?
 runCommand('git ls-files . --exclude-standard --others').then((result) => {
-  console.log('Has new files', result.length);
+  console.log('Has new files?', !!result.length);
 });
-
-}
 
 // EXISTS REMOTE BRANCH?
 const hasUnpushedCommits = () => runCommand('git ls-remote --heads --exit-code origin "$(git symbolic-ref --short HEAD)"')
@@ -64,7 +67,7 @@ const hasUnpushedCommits = () => runCommand('git ls-remote --heads --exit-code o
   });
 
 hasUnpushedCommits().then((result) => {
-  console.log(result);
+  console.log('Has UnPushedCommits?', result);
 })
 
 
