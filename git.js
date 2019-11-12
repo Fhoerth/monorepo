@@ -47,10 +47,10 @@ runCommand('git ls-files . --exclude-standard --others').then((result) => {
 
 }
 
-runCommand('git diff @{u}', (result) => {
+runCommand('git ls-remote --heads --exit-code origin "$(git symbolic-ref --short HEAD)"', (result) => {
   console.log('Res', result);
 }).catch((error) => {
-  console.log(error, 'No existe...');
+  console.log('No existe...');
 })
 
 // EXISTS REMOTE BRANCH?
