@@ -38,9 +38,9 @@ runCommand('git ls-files . --exclude-standard --others').then((result) => {
   console.log('Has new files', result.length);
 });
 
-runCommand('git status').then((result) => {
-  console.log('Status', result.length);
-}).catch((error) => {
-  console.log('ERROR');
-  console.log(error);
-})
+// runCommand('git status').then((result) => {
+//   console.log('Status', result.length);
+// }).catch((error) => {
+//   console.log('ERROR');
+//   console.log(error);
+// })
