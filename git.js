@@ -14,7 +14,7 @@ const runCommand = (command) => {
   })
 }
 
-const getCurrentBranch = () => runCommand("git branch | grep \\* | cut -d ' ' -f2");
+const getCurrentBranchName = () => runCommand("git branch | grep \\* | cut -d ' ' -f2");
 
 if (false) {
 
@@ -24,7 +24,7 @@ runCommand('./parent.sh').then((result) => {
 });
 
 // The current !!
-getCurrentBranch().then((result) => {
+getCurrentBranchName().then((result) => {
   console.log('The current', [result], result.length);
 });
 
@@ -52,23 +52,31 @@ runCommand('git ls-files . --exclude-standard --others').then((result) => {
   console.log('Has new files?', !!result.length);
 });
 
-// EXISTS REMOTE BRANCH?
-const hasUnpushedCommits = () => runCommand('git ls-remote --heads --exit-code origin "$(git symbolic-ref --short HEAD)"')
-  .catch((error) => {
-    return true;
+// Has unpushed commits? (only if remote branch exists)
+const hasUnpushedCommits = () => getCurrentBranchName().then(currentBranch => {
+  // has un-pushed commits with the remote branch?
+  return runCommand(`git log origin/${currentBranch}...HEAD`).then((changes) => {
+    return !!changes.length;
   })
-  .then((result) => {
-    return getCurrentBranch().then(currentBranch => {
-      // has un-pushed commits with the remote branch?
-      return runCommand(`git log origin/${currentBranch}...HEAD`).then((changes) => {
-        return !!changes.length;
-      })
-    })
-  });
+});
 
-hasUnpushedCommits().then((result) => {
-  console.log('Has UnPushedCommits?', result);
+  
+// Does remote branch exists?
+const remoteBranchExists = () => getCurrentBranchName().then((branchName) => (
+  runCommand(`git ls-remote --heads origin ${branchName}`)
+)).then((output) => !!output.length);
+
+remoteBranchExists().then((exists) => {
+  console.log('Branch exists?', exists);
+
+  if (exists) {
+    hasUnpushedCommits().then((result) => {
+      console.log('Has UnPushedCommits?', result);
+    })
+  }
 })
+
+
 
 
 
