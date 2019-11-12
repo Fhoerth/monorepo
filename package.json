@@ -6,7 +6,9 @@
     "bootstrap": "lerna bootstrap"
   },
   "devDependencies": {
-    "lerna": "^3.14.1"
+    "lerna": "^3.14.1",
+    "rimraf": "^3.0.0",
+    "uuid": "^3.3.3"
   },
   "workspaces": [
     "packages/*"
