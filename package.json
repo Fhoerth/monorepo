@@ -2,7 +2,7 @@
   "name": "monorepo",
   "private": true,
   "scripts": {
-    "link": "npm run link",
+    "link": "lerna link",
     "bootstrap": "lerna bootstrap"
   },
   "devDependencies": {

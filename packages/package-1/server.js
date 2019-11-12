@@ -1,5 +1,6 @@
 const http = require('http');
 const express = require('express');
+const package3 = require('@monorepo/package-3');
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.get('*', (req, res) => {
     }).on('end', () => {
       data2 = JSON.parse(data2);
       console.log(data2);
-      res.json({ data1: 'package-1-server-data', ...data2 });
+      res.json({ data1: 'package-1-server-data', ...data2, ...package3 });
     
     });
   });
