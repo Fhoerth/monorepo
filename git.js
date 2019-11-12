@@ -14,6 +14,8 @@ const runCommand = (command) => {
   })
 }
 
+if (false) {
+
 // The Parent!!
 runCommand('./parent.sh').then((result) => {
   console.log('RE SULT', [result]);
@@ -42,6 +44,16 @@ runCommand('git diff --cached').then((result) => {
 runCommand('git ls-files . --exclude-standard --others').then((result) => {
   console.log('Has new files', result.length);
 });
+
+}
+
+runCommand('git diff @{u}', (result) => {
+  console.log('Res', result);
+}).catch((error) => {
+  console.log('No existe...');
+})
+
+// EXISTS REMOTE BRANCH?
 
 // has un-pushed commits.
 
