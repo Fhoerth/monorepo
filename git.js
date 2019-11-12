@@ -47,13 +47,12 @@ runCommand('git ls-files . --exclude-standard --others').then((result) => {
 
 }
 
-runCommand('git ls-remote --heads --exit-code origin "$(git symbolic-ref --short HEAD)"', (result) => {
-  console.log('Res', result);
+// EXISTS REMOTE BRANCH?
+runCommand('git ls-remote --heads --exit-code origin "$(git symbolic-ref --short HEAD)"').then((result) => {
+  console.log('Res', '@@@@@', result);
 }).catch((error) => {
   console.log('No existe...');
 })
-
-// EXISTS REMOTE BRANCH?
 
 // has un-pushed commits.
 
