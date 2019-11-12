@@ -60,8 +60,6 @@ const hasUnpushedCommits = () => getCurrentBranchName().then(currentBranch => {
   })
 });
 
-
-  
 // Does remote branch exists?
 const remoteBranchExists = () => getCurrentBranchName().then((branchName) => (
   runCommand(`git ls-remote --heads origin ${branchName}`)
