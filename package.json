@@ -1,0 +1,14 @@
+{
+  "name": "monorepo",
+  "private": true,
+  "scripts": {
+    "link": "npm run link",
+    "bootstrap": "lerna bootstrap"
+  },
+  "devDependencies": {
+    "lerna": "^3.14.1"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
