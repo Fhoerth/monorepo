@@ -16,16 +16,20 @@ const runCommand = (command) => {
 
 // The Parent!!
 runCommand('./parent.sh').then((result) => {
-  console.log(result.replace('\n', '').trim(''));
+  console.log('RESULT', result.replace('\n', '').trim(''));
 });
 
 // Diff!!
 runCommand  ('git diff').then((result) => {
   console.log('DIF', result.length);
-});
+}).catch((error) => {
+  console.log('ERROR');
+  console.log(error);
+})
 
 runCommand('git status').then((result) => {
   console.log('Status', result.length);
 }).catch((error) => {
+  console.log('ERROR');
   console.log(error);
 })
