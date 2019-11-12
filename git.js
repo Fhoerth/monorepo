@@ -20,12 +20,12 @@ runCommand('./parent.sh').then((result) => {
 });
 
 // Diff!!
-runCommand('git diff').then((result) => {
-  console.log('DIF', result);
+runCommand  ('git diff').then((result) => {
+  console.log('DIF', result.length);
 });
 
 runCommand('git status').then((result) => {
-  console.log(result);
+  console.log('Status', result.length);
 }).catch((error) => {
   console.log(error);
 })
