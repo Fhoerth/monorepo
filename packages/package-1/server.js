@@ -8,6 +8,7 @@ app.get('*', (req, res) => {
   http.get('http://localhost:3002/', (httpRes) => {
     let data2 = '';
 
+
     httpRes.on('data', (chunk) => {
       data2 += chunk.toString();
     }).on('end', () => {
