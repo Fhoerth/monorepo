@@ -50,7 +50,7 @@ runCommand('git ls-files . --exclude-standard --others').then((result) => {
 runCommand('git diff @{u}', (result) => {
   console.log('Res', result);
 }).catch((error) => {
-  console.log('No existe...');
+  console.log(error, 'No existe...');
 })
 
 // EXISTS REMOTE BRANCH?
