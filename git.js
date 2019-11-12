@@ -16,7 +16,12 @@ const runCommand = (command) => {
 
 // The Parent!!
 runCommand('./parent.sh').then((result) => {
-  console.log('RE SULT', result);
+  console.log('RE SULT', [result]);
+});
+
+// The current !!
+runCommand("git branch | grep \\* | cut -d ' ' -f2").then((result) => {
+  console.log('The current', [result], result.length);
 });
 
 
@@ -37,6 +42,8 @@ runCommand('git diff --cached').then((result) => {
 runCommand('git ls-files . --exclude-standard --others').then((result) => {
   console.log('Has new files', result.length);
 });
+
+// has un-pushed commits.
 
 // runCommand('git status').then((result) => {
 //   console.log('Status', result.length);
