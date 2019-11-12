@@ -1,14 +1,14 @@
 {
-  "name": "monorepo",
-  "private": true,
+  "name": "@monorepo/package-2",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "link": "lerna link",
-    "bootstrap": "lerna bootstrap"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "lerna": "^3.14.1"
-  },
-  "workspaces": [
-    "packages/*"
-  ]
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
