@@ -1,1 +1,1 @@
-module.exports = { name: 'monorepo' };
+module.exports = { name: 'monorepo-v1-v3' };

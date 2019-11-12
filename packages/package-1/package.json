@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@monorepo/package-3": "0.0.0",
+    "@monorepo/package-3": "git+ssh://git@github.com/Fhoerth/monorepo.git#package-3__v0.0.0",
     "express": "^4.17.1"
   }
 }
